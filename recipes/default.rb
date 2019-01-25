@@ -15,6 +15,12 @@ service 'apache2' do
   action [:enable, :start]
 end
 
+user 'web_admin' do
+  group 'web_admin'
+  system true
+  shell '/bin/bash'
+end
+
 template '/var/www/html/index.html' do # ~FC033
   source 'index.html.erb'
   mode '0644'
